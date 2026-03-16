@@ -1,3 +1,6 @@
+[tool.poetry]
+package-mode = false
+
 [project]
 name = "nonubevigil"
 version = "0.1.0"
@@ -9,6 +12,10 @@ license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
+    "tree-sitter>=0.24",
+    "tree-sitter-java>=0.23",
+    "tree-sitter-javascript>=0.25",
+    "tree-sitter-python>=0.25",
 ]
 
 
