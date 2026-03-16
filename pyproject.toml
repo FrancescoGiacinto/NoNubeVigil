@@ -8,13 +8,15 @@ authors = [
 license = {text = "MIT"}
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = [
-    "tree-sitter>=0.24",
-    "tree-sitter-java>=0.23",
-    "tree-sitter-javascript>=0.25",
-    "tree-sitter-python>=0.25",
-]
 
+[tool.poetry.dependencies]
+tree-sitter         = ">=0.24"
+tree-sitter-java    = ">=0.23"
+tree-sitter-javascript = ">=0.25"
+tree-sitter-python  = ">=0.25"
+customtkinter       = ">=5.2.2,<6.0.0"
+matplotlib          = ">=3.10.8,<4.0.0"
+pillow              = ">=10.0.0"
 
 [tool.poetry.group.dev.dependencies]
 pytest         = "^8.0"
@@ -23,7 +25,8 @@ basedpyright   = "^1.0"
 ruff           = "^0.4"
 
 [tool.poetry.scripts]
-vigil = "nonubevigil.cli:main"
+vigil     = "nonubevigil.cli:main"
+vigil-gui = "gui.app:main"
 
 [tool.ruff]
 line-length = 100
