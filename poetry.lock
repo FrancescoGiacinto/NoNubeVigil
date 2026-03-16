@@ -407,4 +407,4 @@ core = ["tree-sitter (>=0.24,<1.0)"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13"
-content-hash = "67fb99f0a363895bc11f781d7419f313f1d069a9ab055bbdc76c7efe9eadc294"
+content-hash = "97e411f83a6968509b37930edd3cf4ba875a7aad2245000a2624c4f494e0c183"

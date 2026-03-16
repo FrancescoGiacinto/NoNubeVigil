@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections import Counter
+
 from ..models import Finding, Severity
 from ..scoring import ConfidenceScorer
 
@@ -58,7 +60,7 @@ class CLIFormatter:
     def _print_header(self, total: int, files_scanned: int) -> None:
         print()
         print(f"{BOLD}vigil{RESET} · {total} finding(s) across {files_scanned} file(s)")
-        print("─" * 60)
+        print("-" * 60)
 
     # ------------------------------------------------------------------
     # Single finding
@@ -87,4 +89,21 @@ class CLIFormatter:
         # Remediation
         print(f"  {bold}fix:{reset} {f.remediation}")
 
-        # CWE + OWASP
+    def _print_summary(self, findings: list[Finding]) -> None:
+        """Print counts per severity at the end of the report."""
+        counts = Counter(f.severity for f in findings)
+        parts = [f"{sev.name}: {count}" for sev, count in sorted(counts.items(), key=lambda x: -x[0].value)]
+        if parts:
+            dim = "" if self.no_color else DIM
+            reset = "" if self.no_color else RESET
+            print(f"\n{dim}summary: {', '.join(parts)}{reset}")
+
+    def _print_clean(self, files_scanned: int) -> None:
+        """Print message when no findings."""
+        print()
+        print(f"vigil · no findings in {files_scanned} file(s)")
+
+    def _print_errors(self, errors: list[str]) -> None:
+        """Print scan errors when verbose."""
+        for err in errors:
+            print(f"  error: {err}")

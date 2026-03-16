@@ -1,12 +1,9 @@
-[tool.poetry]
-package-mode = false
-
 [project]
 name = "nonubevigil"
 version = "0.1.0"
 description = ""
 authors = [
-    {name = "Francesco Giacinto",email = "francesco.giacinto@outlook.com"}
+    {name = "Francesco Giacinto", email = "francesco.giacinto@outlook.com"}
 ]
 license = {text = "MIT"}
 readme = "README.md"
@@ -19,14 +16,6 @@ dependencies = [
 ]
 
 
-[tool.poetry.extras]
-ast = [
-    "tree-sitter",
-    "tree-sitter-python",
-    "tree-sitter-javascript",
-    "tree-sitter-java",
-]
-
 [tool.poetry.group.dev.dependencies]
 pytest         = "^8.0"
 pytest-cov     = "^5.0"
@@ -34,18 +23,18 @@ basedpyright   = "^1.0"
 ruff           = "^0.4"
 
 [tool.poetry.scripts]
-vigil = ".cli:main"
+vigil = "nonubevigil.cli:main"
 
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py313"
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts   = "--cov=vigil --cov-report=term-missing"
+addopts   = "--cov=nonubevigil --cov-report=term-missing"
 
 [build-system]
 requires      = ["poetry-core"]
